@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
     super.key,
+    required this.title,
+    required this.child,
   });
+
+  final String title;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +87,10 @@ class CustomScaffold extends StatelessWidget {
                       duration: const Duration(milliseconds: 1600),
                       child: Container(
                         margin: const EdgeInsets.only(top: 50),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            "Login",
-                            style: TextStyle(
+                            title,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold),
@@ -97,102 +102,7 @@ class CustomScaffold extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                children: <Widget>[
-                  FadeInUp(
-                    duration: const Duration(milliseconds: 1800),
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                            color: const Color.fromRGBO(143, 148, 251, 1)),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromRGBO(143, 148, 251, .2),
-                            blurRadius: 20.0,
-                            offset: Offset(0, 10),
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Color.fromRGBO(
-                                    143,
-                                    148,
-                                    251,
-                                    1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Email Address",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[500],
-                                ),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Password",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[500],
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  FadeInUp(
-                    duration: const Duration(milliseconds: 1900),
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromRGBO(143, 148, 251, 1),
-                            Color.fromRGBO(143, 148, 251, .6),
-                          ],
-                        ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            child,
           ],
         ),
       ),
